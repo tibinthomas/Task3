@@ -6,7 +6,7 @@
       <th scope="col">Shift 1</th>
       <th scope="col">Start Time</th>
       <th scope="col">End Time</th>
-      <th scope="col" style = "float: right">Active &nbsp; <input type="checked"/></th>
+      <th scope="col" style = "float: right">Active &nbsp; <input type="checkbox"/></th>
     </tr>
   </thead>
   <tbody style="background-color: rgba(178, 186, 189, 0.226)">
@@ -15,11 +15,12 @@
       <td>{{ instance.day }}</td>
       <td>
           <input type="time" name="usr_time" [(ngModel)]="instance.startTime.time" (change)="onChangeInTime()">
-          <!-- console.log({{instance.startTime | date : "HH:mm"}}); -->
-          <!-- value={{instance.startTime | date: 'HH : MM' }} -->
       </td>
       <td>
-          <input type="time" name="usr_time" [(ngModel)]="instance.endTime.time" (change)="onChangeInTime()">
+          <input type="time" name="usr_time" [(ngModel)]="instance.endTime.time" (change)="onChangeInTime()" [ngClass]= "{ 'hilightBox': instance.valiationError.v1 ||  instance.valiationError.v2 ||  instance.valiationError.v3 }">
+          <div *ngIf="instance.valiationError.v1">Overlap v1</div>
+          <div *ngIf="instance.valiationError.v2">Overlap v2</div>
+          <div *ngIf="instance.valiationError.v3">Overlap v3</div>
       </td>
       <td>
         <button class="btn" style = "color:black; width: 100%;" [disabled]="!instance.active.status" (click)="onClickingShift1Button(instance.active.num)">{{ instance.active.text }}</button>
@@ -27,4 +28,3 @@
     </tr>
   </tbody>
 </table>
-

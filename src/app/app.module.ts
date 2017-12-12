@@ -16,7 +16,7 @@ import { Shift2Component } from './shift2/shift2.component';
   declarations: [
     AppComponent,
     Shift1Component,
-    Shift2Component
+    Shift2Component,
   ],
   imports: [
     BrowserModule,

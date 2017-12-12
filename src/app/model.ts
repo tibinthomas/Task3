@@ -6,5 +6,6 @@ export interface ShiftModel {
   active: { status: boolean, text: string, num: number };
   valiationError: { v1: boolean, v2: boolean, v3: boolean };
   endDiffDate: boolean;
+  nextDay: string;
 }
 
