@@ -1,0 +1,33 @@
+
+<table class="table borderless" style="background-color: white">
+  <thead>
+    <tr>
+      <th scope="col"><i class="fa fa-caret-down" aria-hidden="true"></i></th>
+      <th scope="col">Shift 2</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">End Time</th>
+      <th scope="col" style = "float: right">Active &nbsp; <input type="checkbox"/></th>
+    </tr>
+  </thead>
+  <tbody style="background-color: rgba(178, 186, 189, 0.226)">
+    <tr *ngFor="let instance of shift2Datas">
+      <th scope="row"><input type="checkbox" value="instance.checked"/></th>
+      <td>{{ instance.day }}</td>
+      <td>
+          <input type="time" name="usr_time" [(ngModel)]="instance.startTime.time" (change)="onChangeInTime()">
+          <!-- console.log({{instance.startTime | date : "HH:mm"}}); -->
+          <!-- value={{instance.startTime | date: 'HH : MM' }} -->
+      </td>
+      <td>
+          <input type="time" name="usr_time" [(ngModel)]="instance.endTime.time" (change)="onChangeInTime()">
+      </td>
+      <td>
+        <button class="btn" style = "color:black; width: 100%;" [disabled]="!instance.active.status" (click)="onClickingShift2Button(instance.active.num)">{{ instance.active.text }}</button>
+      </td>
+    </tr>
+    <tr>
+        <button class="btn" style = "color:black; width: 200%" (click)="onClickingSave()">Save</button>
+    </tr>
+  </tbody>
+</table>
+

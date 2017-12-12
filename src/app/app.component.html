@@ -1,37 +1,11 @@
-<div class="modal-dialog">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><i class="fa fa-caret-down" aria-hidden="true"></i></th>
-      <th scope="col">Shift 2</th>
-      <th scope="col">Start Time</th>
-      <th scope="col">End Time</th>
-      <th scope="col">Active &nbsp; <input type="checkbox"/></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let instance of shift2Datas">
-      <th scope="row"><input type="checkbox" value="instance.checkbox"/></th>
-      <td>{{ instance.day }}</td>
-      <td>
-        <div class="input-group bootstrap-timepicker timepicker">
-          <input id="timepicker inlineVA" class="form-control" data-provide="timepicker" data-minute-step="1" data-modal-backdrop="true" type="text"/>
-        </div>
-        <div id="inlineVA">
-          <a id="block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-          <a id="block"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-        </div>
-      </td>
-      <td>
-        <div class="input-group bootstrap-timepicker timepicker">
-          <input id="timepicker" class="form-control" data-provide="timepicker" data-minute-step="1" data-modal-backdrop="true" type="text" defaultTime="5:00 PM"/>
-          <a id="block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-          <a id="block"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-        </div></td>
-      <td>
-        <button class="btn btn-primary" [disabled]="!instance.active.status" (click)="onClickingShift2Button()">{{ instance.active.text }}</button></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <app-shift1></app-shift1>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <app-shift2></app-shift2>
+    </div>
+  </div>
 </div>
-
