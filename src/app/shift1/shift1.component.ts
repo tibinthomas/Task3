@@ -25,15 +25,16 @@ export class Shift1Component {
 
 
 onClickingShift1Button(num: number) {
+  this.onChangeInTime();
   if (num === 0) {
   const startTimeToCopy = this.shift1Datas[0].startTime;
   const endTimeToCopy = this.shift1Datas[0].endTime;
-  this.shift1Datas.map(data => { data.startTime = startTimeToCopy;
-                                data.endTime = endTimeToCopy;
+  this.shift1Datas.map(data => { data.startTime = JSON.parse(JSON.stringify(startTimeToCopy));
+                                 data.endTime = JSON.parse(JSON.stringify(endTimeToCopy));
                               });
   } else {
-  this.shift1Datas[num].startTime = this.shift1Datas[num - 1].startTime;
-  this.shift1Datas[num].endTime = this.shift1Datas[num - 1].endTime;
+  this.shift1Datas[num].startTime = JSON.parse(JSON.stringify(this.shift1Datas[num - 1].startTime));
+  this.shift1Datas[num].endTime = JSON.parse(JSON.stringify(this.shift1Datas[num - 1].endTime));
   }
 }
 

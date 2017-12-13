@@ -57,7 +57,7 @@ export class Communication {
       }
 
       // tslint:disable-next-line:max-line-length
-      if (this.s1t2[i].getHours() >= this.s2t1[i].getHours() || this.s1t2[i].getHours() === this.s2t1[i].getHours() && this.s1t2[i].getMinutes() >= this.s2t1[i].getMinutes()) {
+      if (this.s1t2[i].getHours() > this.s2t1[i].getHours() || ((this.s1t2[i].getHours() === this.s2t1[i].getHours()) && this.s2t1[i].getMinutes() < this.s1t2[i].getMinutes())) {
         this.shift1Data[i].valiationError.v1 = true;
         this.shift2Data[i].valiationError.v1 = true;
       } else {
@@ -66,14 +66,14 @@ export class Communication {
       }
 
       // tslint:disable-next-line:max-line-length
-      if ((this.shift2Data[i].endDiffDate === true && this.s1t2[i].getHours() >= this.s1t1[i + 1].getHours()) || (this.shift1Data[i].endDiffDate = true && this.s1t2[i].getHours() === this.s1t1[i + 1].getHours() && this.s1t2[i].getMinutes() >= this.s1t1[i + 1].getMinutes())) {
-        this.shift1Data[i].valiationError.v2 = true;
+      if ((this.shift2Data[i].endDiffDate === true && this.s1t2[i].getHours() > this.s1t1[i + 1].getHours()) || (this.shift1Data[i].endDiffDate === true && this.s1t2[i].getHours() === this.s1t1[i + 1].getHours() && this.s1t2[i].getMinutes() > this.s1t1[i + 1].getMinutes())) {
+        this.shift1Data[i + 1].valiationError.v2 = true;
         this.shift2Data[i].valiationError.v2 = true;
       } else {
         this.shift1Data[i].valiationError.v2 = false;
         this.shift2Data[i].valiationError.v2 = false;
       }
-        
+
     }
     }
 
@@ -104,7 +104,7 @@ export class Communication {
           diffInMins = Math.abs(diffMin) + Math.abs(diffHou) * 60;
         }
 
-        if (diff === true && d2.getHours() < d1.getHours()) {
+        if (diff === true && d2.getHours() < d1.getHours() || d2.getHours() === d1.getHours() && d2.getMinutes() < d1.getMinutes()) {
           spansDays = true;
         }
 

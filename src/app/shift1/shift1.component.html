@@ -15,11 +15,11 @@
       <td>{{ instance.day }}</td>
       <td>
           <input type="time" name="usr_time" [(ngModel)]="instance.startTime.time" (change)="onChangeInTime()">
+          <div *ngIf="instance.valiationError.v2">Overlap v2</div>
       </td>
       <td>
           <input type="time" name="usr_time" [(ngModel)]="instance.endTime.time" (change)="onChangeInTime()" [ngClass]= "{ 'hilightBox': instance.valiationError.v1 ||  instance.valiationError.v2 ||  instance.valiationError.v3 }">
           <div *ngIf="instance.valiationError.v1">Overlap v1</div>
-          <div *ngIf="instance.valiationError.v2">Overlap v2</div>
           <div *ngIf="instance.valiationError.v3">Overlap v3</div>
       </td>
       <td>
