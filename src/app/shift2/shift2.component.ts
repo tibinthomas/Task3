@@ -30,24 +30,24 @@ onClickingShift2Button(num: number) {
   const startTimeToCopy = new Object(this.shift2Datas[0].startTime);
   // const startTimeToCopy = {date: new Date(), time: '11:11'};
   const endTimeToCopy = { et: this.shift2Datas[0].endTime };
-  // const endTimeToCopy = { date: new Date(), time: '11:11' };
-  this.shift2Datas.map(data => { data.startTime = JSON.parse(JSON.stringify(startTimeToCopy));
-                                  data.endTime = JSON.parse(JSON.stringify(endTimeToCopy.et));
+  // const endTimeToCopy = { date: new Date(), time: '11:12' };
+  this.shift2Datas.map(data => { data.startTime = startTimeToCopy;
+                                  data.endTime = endTimeToCopy.et;
                               });
   } else {
-  this.shift2Datas[num].startTime = JSON.parse(JSON.stringify(this.shift2Datas[num - 1].startTime));
-  this.shift2Datas[num].endTime = JSON.parse(JSON.stringify(this.shift2Datas[num - 1].endTime));
+    this.shift2Datas[num].startTime = this.shift2Datas[num - 1].startTime;
+    this.shift2Datas[num].endTime = this.shift2Datas[num - 1].endTime;
   }
 }
 
 onClickingSave() {
   this.comm.v1Validity();
-  if (this.shift2Datas.validityError.v1 || this.shift2Datas.validityError.v2 || this.shift2Datas.validityError.v3) {
-    console.log('Please fix validity errors before saving');
-  } else {
-    console.log('Saved SHIFT 2 successfully after verifiying validity');
+  // if (this.shift2Datas.valiationError.v1 || this.shift2Datas.valiationError.v2 || this.shift2Datas.valiationError.v3) {
+  //   console.log('Please fix validity errors before saving');
+  // } else {
+  //   console.log('Saved SHIFT 2 successfully after verifiying validity');
 
-  }
+  // }
 }
 
 onChangeInTime() {

@@ -24,9 +24,9 @@
           <div *ngIf="instance.endDiffDate">({{ instance.nextDay }})</div>
       </td>
       <td>
-        <button class="btn" style = "color:black; width: 100%;" [disabled]="!instance.active.status" (click)="onClickingShift2Button(instance.active.num)">{{ instance.active.text }}</button>
+        <button class="btn" style = "color:black; width: 100%" [disabled]="!instance.active.status" (click)="onClickingShift2Button(instance.active.num)">{{ instance.active.text }}</button>
       </td>
-    </tr>
+    </tr> 
     <tr>
         <button class="btn" style = "color:black; width: 200%" (click)="onClickingSave()">Save</button>
     </tr>
