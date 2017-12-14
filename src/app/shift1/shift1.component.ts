@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 // 3rd part imports
 import { DatepickerOptions } from 'ng2-datepicker';
@@ -12,7 +12,7 @@ import { Communication } from '../comm.service';
   styleUrls: ['./shift1.component.css'],
   providers: [ Shift ]
 })
-export class Shift1Component {
+export class Shift1Component implements OnChanges {
   shift1Datas;
   startTime: string;
   endTime: string;
@@ -39,10 +39,13 @@ onClickingShift1Button(num: number) {
 
 onClickingSave() {
   this.comm.v1Validity();
-  console.log('Saved SHIFT 2 successfully after verifiying validity');
 }
 
 onChangeInTime() {
+  this.comm.shift1Data = this.shift1Datas;
+}
+
+ngOnChanges() {
   this.comm.shift1Data = this.shift1Datas;
 }
 

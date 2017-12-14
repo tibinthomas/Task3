@@ -57,7 +57,7 @@ export class Communication {
       }
 
       // tslint:disable-next-line:max-line-length
-      if (this.s1t2[i].getHours() >= this.s2t1[i].getHours() || this.s1t2[i].getHours() === this.s2t1[i].getHours() && this.s1t2[i].getMinutes() >= this.s2t1[i].getMinutes()) {
+      if (this.s1t2[i].getHours() > this.s2t1[i].getHours() || this.s1t2[i].getHours() === this.s2t1[i].getHours() && this.s1t2[i].getMinutes() > this.s2t1[i].getMinutes()) {
         this.shift1Data[i].valiationError.v1 = true;
         this.shift2Data[i].valiationError.v1 = true;
       } else {
@@ -65,15 +65,22 @@ export class Communication {
         this.shift2Data[i].valiationError.v1 = false;
       }
 
+      if (i !== 6) {
       // tslint:disable-next-line:max-line-length
-      if ((this.shift2Data[i].endDiffDate === true && this.s1t2[i].getHours() >= this.s1t1[i + 1].getHours()) || (this.shift1Data[i].endDiffDate = true && this.s1t2[i].getHours() === this.s1t1[i + 1].getHours() && this.s1t2[i].getMinutes() >= this.s1t1[i + 1].getMinutes())) {
-        this.shift1Data[i].valiationError.v2 = true;
+      if ((this.shift2Data[i].endDiffDate === true && this.s2t2[i].getHours() > this.s1t1[i + 1].getHours()) || (this.shift2Data[i].endDiffDate = true && this.s2t2[i].getHours() === this.s1t1[i + 1].getHours() && this.s2t2[i].getMinutes() > this.s1t1[i + 1].getMinutes())) {
+        this.shift1Data[i + 1].valiationError.v2 = true;
         this.shift2Data[i].valiationError.v2 = true;
       } else {
-        this.shift1Data[i].valiationError.v2 = false;
+        this.shift1Data[i + 1].valiationError.v2 = false;
         this.shift2Data[i].valiationError.v2 = false;
       }
-        
+    }
+
+      if (this.shift1Data[i].valiationError.v1 || this.shift2Data[i].valiationError.v2 || this.shift2Data[i].valiationError.v3) { 
+        console.log('Please fix validity errors before saving');
+      } else {
+        console.log('Saved SHIFTS successfully after verifiying validity');
+      }
     }
     }
 

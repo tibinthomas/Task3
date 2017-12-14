@@ -38,13 +38,8 @@ onClickingShift2Button(num: number) {
 }
 
 onClickingSave() {
+  this.comm.shift2Data = this.shift2Datas;
   this.comm.v1Validity();
-  if (this.shift2Datas.validityError.v1 || this.shift2Datas.validityError.v2 || this.shift2Datas.validityError.v3) {
-    console.log('Please fix validity errors before saving');
-  } else {
-    console.log('Saved SHIFT 2 successfully after verifiying validity');
-    
-  }
 }
 
 onChangeInTime() {
